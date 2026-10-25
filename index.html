@@ -3,11 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Game</title>
+    <meta name="theme-color" content="#f4fbff">
+    <title>Drop to the Well | charity: water</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
+    <header class="site-header">
+        <a class="brand" href="#main" aria-label="charity: water game home">
+            <img src="img/cw_logo_horizontal.png" alt="charity: water">
+        </a>
+    </header>
+
+    <main id="main" class="page-layout">
+        <section class="intro" aria-labelledby="game-title">
+            <h1 id="game-title">Drop to<br><span>the well.</span></h1>
+            <p class="intro-copy">Guide the raindrop through the rocks to the water can.</p>
+        </section>
+
+        <section class="game-panel" aria-label="Drop to the Well game">
+            <div class="game-header">
+                <div id="game-status" class="game-status" aria-live="polite">Ready when you are</div>
+                <div class="score-display" aria-live="polite">Points <strong id="score-value">100</strong></div>
+            </div>
+
+            <div class="progress-track" role="progressbar" aria-label="Journey progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span id="progress-fill"></span>
+            </div>
+
+            <div id="game-board" class="game-board" aria-label="Game course. Move the raindrop left and right to avoid the rocks.">
+                <div class="hazard-row" style="top: 14%;" aria-hidden="true">
+                    <span class="rock" style="left: 0%; width: 23%;"></span>
+                    <span class="rock" style="left: 77%; width: 23%;"></span>
+                </div>
+                <div class="hazard-row" style="top: 36%;" aria-hidden="true">
+                    <span class="rock" style="left: 0%; width: 8%;"></span>
+                    <span class="rock" style="left: 52%; width: 48%;"></span>
+                </div>
+                <div class="hazard-row" style="top: 58%;" aria-hidden="true">
+                    <span class="rock" style="left: 0%; width: 45%;"></span>
+                    <span class="rock" style="left: 93%; width: 7%;"></span>
+                </div>
+                <div class="hazard-row" style="top: 76%;" aria-hidden="true">
+                    <span class="rock" style="left: 0%; width: 18%;"></span>
+                    <span class="rock" style="left: 72%; width: 28%;"></span>
+                </div>
+
+                <div class="multiplier" style="top: 8%; left: 50%;" aria-hidden="true">2x</div>
+                <div class="multiplier" style="top: 28%; left: 42%;" aria-hidden="true">2x</div>
+                <div class="multiplier" style="top: 48%; left: 58%;" aria-hidden="true">2x</div>
+                <div id="raindrop" class="raindrop" role="img" aria-label="Your raindrop"></div>
+                <div class="well">
+                    <img src="img/water-can-transparent.png" alt="Water can at the finish">
+                </div>
+                <div id="confetti-layer" class="confetti-layer" aria-hidden="true"></div>
+                <div id="finish-message" class="finish-message" aria-live="polite" hidden></div>
+            </div>
+
+            <div class="game-controls">
+                <p class="control-hint"><span class="keycap">←</span><span class="keycap">→</span> or tap to steer</p>
+                <div class="control-actions">
+                    <div class="touch-controls" aria-label="Movement controls">
+                        <button class="move-button" type="button" data-direction="-1" aria-label="Move left">&larr;</button>
+                        <button class="move-button" type="button" data-direction="1" aria-label="Move right">&rarr;</button>
+                    </div>
+                    <button id="reset-button" class="reset-button" type="button">Reset</button>
+                    <button id="start-button" class="start-button" type="button">Start run <span aria-hidden="true">&rarr;</span></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
